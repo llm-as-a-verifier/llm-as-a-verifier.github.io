@@ -1,0 +1,1 @@
+{"instruction": "Move the corn over on the plate.", "num_frames": 32, "verifier": "Qwen/Qwen3.6-35B-A3B (iter11_single_full_r5)", "scores": [0.0, 0.0931, 0.1589, 0.098, 0.1479, 0.1236, 0.1684, 0.3052, 0.4456]}
