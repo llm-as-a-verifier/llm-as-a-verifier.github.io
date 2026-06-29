@@ -705,7 +705,7 @@ Note: We use a letter-based scale instead of digits to enable logprob extraction
     <div class="container is-max-desktop">
       <div class="columns is-centered" style="margin-bottom: 0;">
         <div class="column is-full-width">
-          <details class="sub-accordion"><summary>Case Study</summary><div class="acc-body">
+          <details class="sub-accordion"><summary>Case Study: Terminal-Bench</summary><div class="acc-body">
           <p class="tldr-caption" style="max-width:880px; text-align:left;">
             To concretely illustrate how scaling granularity to \(G{=}20\) and our probabilistic formulation sharpen the verifier's signal, we analyze a representative trajectory pair from the <code>query-optimize</code> task on Terminal-Bench&nbsp;V2. The agent is given a slow SQL query and asked to produce an equivalent optimized version; both candidates run faster, but only one validates equivalence against the canonical database. Over 100 repeated evaluations, a discrete 1&ndash;5 judge collapses these nuanced assessments into ties (88/100). Taking the expectation over the <em>same</em> 5-point distribution eliminates ties entirely and ranks the correct trajectory higher in 69/100 runs; scaling granularity to \(G{=}20\) sharpens the signal further, ranking it strictly higher in <strong>77/100</strong> runs.
           </p>
