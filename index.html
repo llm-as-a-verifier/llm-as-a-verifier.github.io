@@ -114,6 +114,17 @@
     .cta:hover { transform:translateY(-2px); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
     .cta.primary:hover { box-shadow:0 12px 32px rgba(177,4,14,0.30); }
     .cta.dark:hover { background:#000; border-color:#000; }
+    .hero-actions.secondary { margin-top:14px; }
+    .cta.install { font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; font-weight:500;
+      background:#b1040e; border-color:#b1040e; color:#fff; cursor:pointer; gap:10px; }
+    .cta.install:hover { box-shadow:0 12px 32px rgba(177,4,14,0.30); }
+    .cta.install .prompt { color:rgba(255,255,255,0.7); font-weight:700; }
+    .cta.install .copy-icon { opacity:.75; }
+    .cta.install.copied .copy-icon { opacity:1; color:#eaffea; }
+    .cta.outline-red { background:#fff; border-color:#b1040e; color:#b1040e; }
+    .cta.outline-red:hover { background:#fff5f5; box-shadow:0 12px 32px rgba(177,4,14,0.18); }
+    .cta.slack { background:#4A154B; border-color:#4A154B; color:#fff; }
+    .cta.slack:hover { background:#611f69; border-color:#611f69; box-shadow:0 12px 32px rgba(74,21,75,0.30); }
     @media (max-width:768px){ .hero-text{font-size:38px;} .sub-hero-text{font-size:18px;} .hero-flow{padding:36px 24px 28px;} }
 
     @keyframes orbFlow1 { 0%,100%{transform:translate(0,0);} 25%{transform:translate(80px,40px);} 50%{transform:translate(120px,-20px);} 75%{transform:translate(40px,60px);} }
@@ -146,6 +157,7 @@
       background:linear-gradient(135deg,#ffffff 0%, #fbf3f4 100%); border:1px solid rgba(177,4,14,0.12);
       box-shadow:0 10px 30px rgba(154,31,54,0.06); }
     .how-band > * { position:relative; z-index:1; }
+    .how-band.api-band { background:linear-gradient(135deg,#ffffff 0%, #f2f5fb 100%); border-color:rgba(0,19,77,0.10); box-shadow:0 10px 30px rgba(31,54,120,0.06); }
     .how-orb { position:absolute; border-radius:50%; pointer-events:none; z-index:0; }
     .how-orb-1 { width:280px; height:280px; top:-130px; left:-90px; background:radial-gradient(circle, rgba(177,4,14,0.10) 0%, rgba(177,4,14,0) 70%); animation:orbFlow1 24s ease-in-out infinite; }
     .how-orb-2 { width:320px; height:320px; bottom:-160px; right:-100px; background:radial-gradient(circle, rgba(0,19,77,0.07) 0%, rgba(0,19,77,0) 70%); animation:orbFlow2 28s ease-in-out infinite; }
@@ -164,6 +176,18 @@
       color:#2a2a2a; background:#f7f7f6; border:1px solid rgba(0,0,0,0.08); border-left:3px solid #b1040e;
       border-radius:10px; padding:16px 18px; white-space:pre-wrap; text-align:left; margin:18px auto 0; max-width:880px; overflow-x:auto; }
     .prompt-box .ph { color:#b1040e; }
+    /* ---- API-in-a-few-lines cards ---- */
+    .api-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:22px 0 0; max-width:none; width:100%; }
+    @media (max-width:820px){ .api-grid { grid-template-columns:1fr; } }
+    .api-card { background:#ffffff; border:1px solid rgba(0,0,0,0.07); border-radius:18px; padding:22px 22px 20px; text-align:left; box-shadow:0 8px 24px rgba(0,0,0,0.06); transition:transform .25s ease, box-shadow .25s ease; display:flex; flex-direction:column; }
+    .api-card:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,0.10); }
+    .api-name { font-family:'Fira Code',monospace; font-size:15px; font-weight:600; color:#b1040e; margin-bottom:4px; }
+    .api-name .mod { color:#9a9a9a; font-weight:500; }
+    .api-tag { font-family:'Space Grotesk',-apple-system,sans-serif; font-size:13px; font-weight:600; color:#1a1a1a; margin-bottom:12px; }
+    .api-desc { font-family:'Inter',-apple-system,sans-serif; font-size:13px; color:#666; line-height:1.55; margin:12px 0 0; }
+    .api-code { font-family:'Fira Code',ui-monospace,Menlo,Consolas,monospace; font-size:11px; line-height:1.75;
+      color:#e6e6e6; background:#0f1115; border-radius:10px; padding:13px 14px; white-space:pre; overflow-x:auto; }
+    .api-code .k { color:#ff7b72; } .api-code .fn { color:#79c0ff; } .api-code .cm { color:#7a828e; } .api-code .s { color:#a5d6ff; }
     .eq-box { text-align:center; margin:18px auto; max-width:880px; }
     .mini-table-wrap { overflow-x:auto; margin:16px auto 0; }
     .mini-table { width:100%; max-width:620px; margin:0 auto; border-collapse:collapse; font-family:'Inter',-apple-system,sans-serif; font-size:13.5px; color:#333; }
@@ -215,6 +239,19 @@
     .side-nav a.active .lbl { opacity:1; }
     .side-nav a.active .dot { background:#b1040e; border-color:#b1040e; box-shadow:0 0 0 4px rgba(177,4,14,0.14); }
     @media (max-width:1180px){ .side-nav { display:none; } }
+    /* ---- Top nav bar (appears on scroll) ---- */
+    .top-nav { position:fixed; top:0; left:0; right:0; z-index:40; background:rgba(255,255,255,0.82);
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(0,0,0,0.06);
+      transform:translateY(-100%); opacity:0; pointer-events:none; transition:transform .35s ease, opacity .35s ease; }
+    .top-nav.visible { transform:translateY(0); opacity:1; pointer-events:auto; }
+    .top-nav .tn-inner { box-sizing:content-box; max-width:960px; margin:0 auto; padding:11px 24px; display:flex; align-items:center; justify-content:space-between; }
+    .top-nav .tn-logo img { height:28px; width:auto; display:block; }
+    .top-nav .tn-links { display:flex; align-items:center; gap:32px; }
+    .top-nav .tn-links a { display:inline-flex; align-items:center; gap:7px; text-decoration:none; font-family:'Space Grotesk',-apple-system,sans-serif; font-size:14px; font-weight:600; color:#3a3a3a; transition:color .2s; }
+    .top-nav .tn-links a:hover { color:#b1040e; }
+    .top-nav .tn-links a svg { flex:0 0 auto; opacity:.8; transition:opacity .2s; }
+    .top-nav .tn-links a:hover svg { opacity:1; }
+    @media (max-width:600px){ .top-nav .tn-inner{ padding:8px 24px; } .top-nav .tn-logo img{ height:24px; } .top-nav .tn-links{ gap:18px; } .top-nav .tn-links a{ font-size:13px; } }
     .tldr-caption { font-family:'Inter',-apple-system,sans-serif; color:#7a7a7a; font-size:14px; line-height:1.7; max-width:860px; margin:18px auto 0 auto; }
     .tldr-caption strong { color:#4a4a4a; }
     .stat-card { background:#f7f7f6; border:1px solid rgba(0,0,0,0.06); border-radius:20px; padding:28px 14px; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:all .3s ease; position:relative; overflow:hidden; text-align:center; height:100%; }
@@ -262,6 +299,26 @@
 
 <body>
 
+<nav class="top-nav" id="topNav">
+  <div class="tn-inner">
+  <a class="tn-logo" href="#top"><img src="./figures/logo.png" alt="LLM-as-a-Verifier"></a>
+  <div class="tn-links">
+    <a href="https://github.com/llm-as-a-verifier/llm-as-a-verifier" target="_blank">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      Code
+    </a>
+    <a href="https://llm-as-a-verifier.com/docs/" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h11a3 3 0 0 1 3 3v15l-4.5-2.5L9 21V6a1 1 0 0 0-1-1H4V3zm16 3a1 1 0 0 0-1-1v14.2l1 .55V6z"/></svg>
+      Documentation
+    </a>
+    <a href="https://join.slack.com/t/llm-as-a-verifier/shared_invite/zt-3utx6oe8m-86ACBqtPGfsOnpOoMJQwng" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#E01E5A" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/><path fill="#36C5F0" d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z"/><path fill="#2EB67D" d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z"/><path fill="#ECB22E" d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+      Slack
+    </a>
+  </div>
+  </div>
+</nav>
+
 <nav class="side-nav">
   <a href="#overview" data-target="overview"><span class="dot"></span><span class="lbl">Overview</span></a>
   <a href="#results" data-target="results"><span class="dot"></span><span class="lbl">Results</span></a>
@@ -303,7 +360,7 @@
             <span class="affiliation" style="margin-top:6px; display:none;">Email: <a href="mailto:jackykwok@stanford.edu" style="color:inherit;">jackykwok@stanford.edu</a></span>
           </div>
           <div class="hero-actions">
-            <a class="cta primary" href="https://arxiv.org/abs/2602.12281" target="_blank">
+            <a class="cta primary" href="https://arxiv.org/pdf/2607.05391" target="_blank">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6z"/></svg>
               Read the paper
             </a>
@@ -314,6 +371,21 @@
             <a class="cta" href="https://github.com/llm-as-a-verifier/TurboAgent" target="_blank">
               <img src="./media/logos/claude_white.png" alt="" style="height:1em; width:auto; margin-right:6px; filter: invert(1);">
               Claude Code Plugin
+            </a>
+            <a class="cta slack" href="https://join.slack.com/t/llm-as-a-verifier/shared_invite/zt-3utx6oe8m-86ACBqtPGfsOnpOoMJQwng" target="_blank" style="display:none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-2px; margin-right:6px;"><path fill="#E01E5A" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/><path fill="#36C5F0" d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z"/><path fill="#2EB67D" d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z"/><path fill="#ECB22E" d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+              Slack
+            </a>
+          </div>
+          <div class="hero-actions" style="margin-top:14px; display:none;">
+            <button class="cta install" type="button" onclick="(function(b){navigator.clipboard&&navigator.clipboard.writeText('pip install llm-verifier');b.classList.add('copied');setTimeout(function(){b.classList.remove('copied')},1500);})(this)" aria-label="Copy pip install command">
+              <span class="prompt">$</span>
+              <span>pip install llm-verifier</span>
+              <svg class="copy-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+            <a class="cta outline-red" href="https://llm-as-a-verifier.com/docs/" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px; margin-right:6px;"><path d="M4 3h11a3 3 0 0 1 3 3v15l-4.5-2.5L9 21V6a1 1 0 0 0-1-1H4V3zm16 3a1 1 0 0 0-1-1v14.2l1 .55V6z"/></svg>
+              Documentation
             </a>
           </div>
           <div class="hero-waves" aria-hidden="true">
@@ -431,6 +503,39 @@
           <p class="tldr-caption has-text-centered">
 <strong>LLM-as-a-Verifier</strong> generates a smooth, temporally aligned progress signal over the course of robot rollout while remaining robust to failure modes such as incorrect intent or imprecise grasping. The example above illustrates the &ldquo;Corn on Plate&rdquo; task from the RoboRewardBench-OOD dataset.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="padding-top: 1.75rem; padding-bottom: 4rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered" style="margin-bottom: 0;">
+        <div class="column is-full-width">
+          <div class="tagline" id="api">Three Simple APIs</div>
+          <div class="api-grid">
+            <div class="api-card">
+              <div class="api-name"><span class="mod">llm_verifier.</span>select</div>
+              <div class="api-tag">🏆 Best-of-N selection</div>
+              <div class="api-code"><span class="k">from</span> llm_verifier <span class="k">import</span> select
+best = <span class="fn">select</span>(task, cands)</div>
+              <p class="api-desc">Score N candidates and return the best one &mdash; test-time scaling in a single call.</p>
+            </div>
+            <div class="api-card">
+              <div class="api-name"><span class="mod">llm_verifier.</span>compare</div>
+              <div class="api-tag">⚖️ Pairwise comparison</div>
+              <div class="api-code"><span class="k">from</span> llm_verifier <span class="k">import</span> compare
+best = <span class="fn">compare</span>(task, a, b)</div>
+              <p class="api-desc">Directly score two candidates head-to-head with fine-grained preferences.</p>
+            </div>
+            <div class="api-card">
+              <div class="api-name"><span class="mod">llm_verifier.</span>track</div>
+              <div class="api-tag">📈 Progress tracking</div>
+              <div class="api-code"><span class="k">from</span> llm_verifier <span class="k">import</span> track
+score = <span class="fn">track</span>(task, traj)</div>
+              <p class="api-desc">Get a temporally aligned progress score over a rollout for monitoring or RL.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -992,10 +1097,14 @@ Note: We use a letter-based scale instead of digits to enable logprob extraction
   <div class="columns is-centered">
     <div class="column is-7 content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{kwok2026llmverifier,
+      <pre><code>@misc{kwok2026llmasaverifiergeneralpurposeverificationframework,
       title={LLM-as-a-Verifier: A General-Purpose Verification Framework},
       author={Jacky Kwok and Shulu Li and Pranav Atreya and Yuejiang Liu and Yixing Jiang and Chelsea Finn and Marco Pavone and Ion Stoica and Azalia Mirhoseini},
       year={2026},
+      eprint={2607.05391},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2607.05391},
 }</code></pre>
     </div>
   </div>
@@ -1017,9 +1126,12 @@ Note: We use a letter-based scale instead of digits to enable logprob extraction
   var links={};
   document.querySelectorAll('.side-nav a').forEach(function(a){ links[a.getAttribute('data-target')]=a; });
   var nav=document.querySelector('.side-nav');
+  var topNav=document.getElementById('topNav');
   var trig=document.getElementById('results');
   var S=ids.map(function(id){ var el=document.getElementById(id); return el?{id:id,el:el}:null; }).filter(Boolean);
   function onScroll(){
+    // show the top nav bar once the user scrolls down into the page
+    if(topNav){ topNav.classList.toggle('visible', window.scrollY > 120); }
     // show the nav only once we've scrolled to/past the Test-Time Scaling (results) section
     if(nav){
       var show = trig ? (trig.getBoundingClientRect().top <= 100) : (window.scrollY > 400);
