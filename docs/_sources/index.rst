@@ -17,7 +17,7 @@ Its core features include:
 
 - **Simple, Extensible API**: ``llm_verifier.select``, ``compare``, and ``track`` cover best-of-N selection, pairwise scoring, and progress tracking in a few lines.
 - **Fine-Grained Rewards**: Continuous rewards in [0, 1] by scaling verification across multiple dimensions.
-- **Cost-Efficient Best-of-N Selection**: The Probabilistic Pivot Tournament (PPT) ranks N candidate trajectories with O(Nk²) pairwise verifications instead of a full O(N²) round-robin, concentrating the budget on uncertain top candidates.
+- **Cost-Efficient Best-of-N Selection**: The Probabilistic Pivot Tournament (PPT) ranks N candidate trajectories with O(Nk) pairwise verifications instead of a full O(N²) round-robin, concentrating the budget on uncertain top candidates.
 - **Progress Tracking**: The same fine-grained reward scores a trajectory at every step — offline over a finished run or online while the agent is still executing.
 - **Multimodal Inputs**: Every API supports optional image and video inputs, enabling the verifier to score images, VLM-based agents, and robotics rollouts.
 - **State-of-the-Art Results**: Achieves SOTA on Terminal-Bench V2 (86.5%), SWE-Bench Verified (78.2%), RoboRewardBench (87.4%), and MedAgentBench (73.3%).

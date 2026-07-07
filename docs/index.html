@@ -412,7 +412,7 @@ Its core features include:</p>
 <ul class="simple">
 <li><p><strong>Simple, Extensible API</strong>: <code class="docutils literal notranslate"><span class="pre">llm_verifier.select</span></code>, <code class="docutils literal notranslate"><span class="pre">compare</span></code>, and <code class="docutils literal notranslate"><span class="pre">track</span></code> cover best-of-N selection, pairwise scoring, and progress tracking in a few lines.</p></li>
 <li><p><strong>Fine-Grained Rewards</strong>: Continuous rewards in [0, 1] by scaling verification across multiple dimensions.</p></li>
-<li><p><strong>Cost-Efficient Best-of-N Selection</strong>: The Probabilistic Pivot Tournament (PPT) ranks N candidate trajectories with O(Nk²) pairwise verifications instead of a full O(N²) round-robin, concentrating the budget on uncertain top candidates.</p></li>
+<li><p><strong>Cost-Efficient Best-of-N Selection</strong>: The Probabilistic Pivot Tournament (PPT) ranks N candidate trajectories with O(Nk) pairwise verifications instead of a full O(N²) round-robin, concentrating the budget on uncertain top candidates.</p></li>
 <li><p><strong>Progress Tracking</strong>: The same fine-grained reward scores a trajectory at every step — offline over a finished run or online while the agent is still executing.</p></li>
 <li><p><strong>Multimodal Inputs</strong>: Every API supports optional image and video inputs, enabling the verifier to score images, VLM-based agents, and robotics rollouts.</p></li>
 <li><p><strong>State-of-the-Art Results</strong>: Achieves SOTA on Terminal-Bench V2 (86.5%), SWE-Bench Verified (78.2%), RoboRewardBench (87.4%), and MedAgentBench (73.3%).</p></li>

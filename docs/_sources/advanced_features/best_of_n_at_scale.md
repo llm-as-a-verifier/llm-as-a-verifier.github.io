@@ -22,12 +22,12 @@ print("Best trajectory:", result.index)           # result.best is the trajector
 print("Ranking:", result.ranking)                 # all trajectories, best-first
 ```
 
-Under the hood, `select` runs the [Probabilistic Pivot Tournament](pivot_tournament.md) to rank all `N` trajectories using `O(Nk²)` pairwise verifications instead of a full `O(N²)` round-robin.
+Under the hood, `select` runs the [Probabilistic Pivot Tournament](pivot_tournament.md) to rank all `N` trajectories using `O(Nk)` pairwise verifications instead of a full `O(N²)` round-robin.
 `pivots` trades cost for accuracy: more pivots = more comparisons = higher accuracy.
 
 ## Tournament controls
 
-- `pivots`: pivots `k` in the tournament; keep `k` small relative to `N` — cost grows as `O(Nk²)`, and `k ≥ N` degenerates to a full round-robin.
+- `pivots`: pivots `k` in the tournament; keep `k` small relative to `N` — cost grows as `O(Nk)`, and `k ≥ N` degenerates to a full round-robin.
 - `seed`: identical inputs with the same seed run the identical tournament.
 - `cache`: JSON score cache path; re-runs only score comparisons not seen before, so interrupted runs resume cheaply.
 - `max_workers`: concurrency for verifier calls (default 50).

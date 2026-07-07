@@ -428,7 +428,7 @@
 │   ├── benchmarks.py            #   BENCHMARKS registry (one Benchmark / launch)
 │   ├── fine_grained_reward.py   #   R(x,τ): Gemini logprob scoring + cache
 │   ├── progress.py              #   llm_verifier.track(...): per-step progress curve
-│   ├── pivot_tournament.py      #   PPT: O(Nk²) selection (Bradley-Terry)
+│   ├── pivot_tournament.py      #   PPT: O(Nk) selection (Bradley-Terry)
 │   ├── prompts.py               #   load criteria/*.md + normalize criteria args
 │   └── loaders.py               #   per-benchmark trajectory loaders
 ├── data/                        # agent trajectories per benchmark

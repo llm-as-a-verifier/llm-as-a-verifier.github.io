@@ -33,7 +33,7 @@ def select(
 ```
 
 Select the best of N agent trajectories for a single task.
-Scores directed pairs of trajectories with the fine-grained reward and aggregates them with a Probabilistic Pivot Tournament (PPT), so the cost is O(Nk²) verifier comparisons rather than the O(N²) of a full round-robin.
+Scores directed pairs of trajectories with the fine-grained reward and aggregates them with a Probabilistic Pivot Tournament (PPT), so the cost is O(Nk) verifier comparisons rather than the O(N²) of a full round-robin.
 Identical inputs with the same `seed` run the identical tournament.
 
 **Arguments**
@@ -44,7 +44,7 @@ Identical inputs with the same `seed` run the identical tournament.
 - `images`: task-context image(s) the verifier sees with every comparison — a single image or a list ([`ImagesArg`](#constants-and-helpers)); requires a multimodal verifier model.
 - `ground_truth_note`: optional note the verifier always sees; defaults to the note parsed from the prompt file (or empty).
 - `n_evaluations`: repeated verifications K per criterion.
-- `pivots`: number of pivots k in the tournament. Keep k small relative to `len(candidates)` — cost grows as O(Nk²), and k ≥ N degenerates to a full round-robin (k is clamped to N).
+- `pivots`: number of pivots k in the tournament. Keep k small relative to `len(candidates)` — cost grows as O(Nk), and k ≥ N degenerates to a full round-robin (k is clamped to N).
 - `seed`: seed for the random ring pass.
 - `max_workers`: concurrency for verifier calls.
 - `model`: verifier model name (default `gemini-2.5-flash`).

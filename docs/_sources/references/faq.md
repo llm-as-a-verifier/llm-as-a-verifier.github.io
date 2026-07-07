@@ -29,7 +29,7 @@ See [Verification as a Scaling Axis](../advanced_features/verification_scaling.m
 
 ## How much does a `select` call cost?
 
-`O(Nk²)` directed comparisons instead of `O(N²)`, each costing `C × K` verifier calls (criteria × `n_evaluations`) — check `result.n_comparisons` after a run.
+`O(Nk)` directed comparisons instead of `O(N²)`, each costing `C × K` verifier calls (criteria × `n_evaluations`) — check `result.n_comparisons` after a run.
 Reduce cost with fewer `pivots`, fewer `n_evaluations`, or a score `cache`.
 
 ## How do I make runs reproducible and resumable?

@@ -34,13 +34,13 @@ print(result.scores)  # candidate scores: [0.73104, 0.38446, 0.38449]
 
 In the example above, the verifier picks the correct string reversal over two incorrect candidates.
 
-Under the hood, `select` runs the [Probabilistic Pivot Tournament](../advanced_features/pivot_tournament.md) to rank all `N` trajectories efficiently — `O(Nk²)` pairwise verifications instead of a full `O(N²)` round-robin, where `k` is the user-set number of `pivots` (`k < N`).
+Under the hood, `select` runs the [Probabilistic Pivot Tournament](../advanced_features/pivot_tournament.md) to rank all `N` trajectories efficiently — `O(Nk)` pairwise verifications instead of a full `O(N²)` round-robin, where `k` is the user-set number of `pivots` (`k < N`).
 
 ## Key arguments
 
 - `criteria` *(required)*: a benchmark name, a criteria file path, a `{name: description}` dict, or a list of strings — see [Writing Verifier Criteria](criteria.md).
 - `n_evaluations=8`: repeats `K` per criterion; averaging reduces per-call noise.
-- `pivots=2`: pivots `k` in the tournament; cost grows as `O(Nk²)`.
+- `pivots=2`: pivots `k` in the tournament; cost grows as `O(Nk)`.
 - `model="gemini-2.5-flash"`: the verifier model.
 
 See [`VerifierResult`](../references/api.md#verifierresult) for all fields (`.best`, `.ranking`, …) and arguments.

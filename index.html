@@ -8,6 +8,10 @@
 
   <title>LLM-as-a-Verifier</title>
 
+  <link rel="icon" type="image/png" href="./figures/hq.png">
+  <link rel="shortcut icon" type="image/png" href="./figures/hq.png">
+  <link rel="apple-touch-icon" href="./figures/hq.png">
+
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap"
@@ -585,13 +589,13 @@ Note: We use a letter-based scale instead of digits to enable logprob extraction
             <img src="./figures/pivot_tournament.png" alt="Probabilistic Pivot Tournament" style="width: 100%; max-width: 1100px; display: block; margin-left: auto; margin-right: auto;">
           </div>
           <p class="tldr-caption has-text-centered">
-            To select the best of \(N\) candidates under a constrained verification budget, PPT compares each candidate against a small set of \(k \ll N\) pivots, cutting cost from \(\mathcal{O}(N^2)\) to \(\mathcal{O}(Nk^2)\).
+            To select the best of \(N\) candidates under a constrained verification budget, PPT compares each candidate against a small set of \(k \ll N\) pivots, cutting cost from \(\mathcal{O}(N^2)\) to \(\mathcal{O}(Nk)\).
           </p>
           <div style="max-width:900px; margin:16px auto 0; text-align:left;">
             <p class="tldr-caption" style="max-width:none; margin:8px 0;"><strong>(1)&nbsp;Candidates:</strong> the candidate pool \(\{\tau_1,\dots,\tau_N\}\) to be ranked.</p>
             <p class="tldr-caption" style="max-width:none; margin:8px 0;"><strong>(2)&nbsp;Ring pass:</strong> a random Hamiltonian cycle scores the \(N\) adjacent pairs so every candidate appears once in the &ldquo;A&rdquo; slot and once in &ldquo;B&rdquo;, canceling the model's positional bias.</p>
             <p class="tldr-caption" style="max-width:none; margin:8px 0;"><strong>(3)&nbsp;Pivot selection:</strong> candidates are ranked by their ring-pass scores \(w_{(i)}\), and the top-\(k\) candidates form the pivot set \(\mathcal{P}\).</p>
-            <p class="tldr-caption" style="max-width:none; margin:8px 0;"><strong>(4)&nbsp;Pivot tournament:</strong> every <em>non-pivot&ndash;vs&ndash;pivot</em> and <em>pivot&ndash;vs&ndash;pivot</em> pair is scored with the fine-grained reward estimation above, concentrating the budget on uncertain top candidates and cutting cost from \(\mathcal{O}(N^2)\) to \(\mathcal{O}(Nk^2)\).</p>
+            <p class="tldr-caption" style="max-width:none; margin:8px 0;"><strong>(4)&nbsp;Pivot tournament:</strong> every <em>non-pivot&ndash;vs&ndash;pivot</em> and <em>pivot&ndash;vs&ndash;pivot</em> pair is scored with the fine-grained reward estimation above, concentrating the budget on uncertain top candidates and cutting cost from \(\mathcal{O}(N^2)\) to \(\mathcal{O}(Nk)\).</p>
             <p class="tldr-caption" style="max-width:none; margin:8px 0;"><strong>(5)&nbsp;Selection:</strong> comparisons are aggregated into weight \(w_i\) and count \(c_i\); the candidate with the highest normalized \(w_i/c_i\) is returned.</p>
           </div>
         </div>
