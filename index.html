@@ -240,12 +240,12 @@
     .side-nav a.active .dot { background:#b1040e; border-color:#b1040e; box-shadow:0 0 0 4px rgba(177,4,14,0.14); }
     @media (max-width:1180px){ .side-nav { display:none; } }
     /* ---- Top nav bar (appears on scroll) ---- */
-    .top-nav { position:fixed; top:0; left:0; right:0; z-index:40; background:rgba(255,255,255,0.82);
+    .top-nav { position:fixed; top:0; left:0; right:0; z-index:40; background:#ffffff;
       backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(0,0,0,0.06);
       transform:translateY(-100%); opacity:0; pointer-events:none; transition:transform .35s ease, opacity .35s ease; }
     .top-nav.visible { transform:translateY(0); opacity:1; pointer-events:auto; }
     .top-nav .tn-inner { box-sizing:content-box; max-width:960px; margin:0 auto; padding:11px 24px; display:flex; align-items:center; justify-content:space-between; }
-    .top-nav .tn-logo img { height:28px; width:auto; display:block; }
+    .top-nav .tn-logo img { height:28px; width:auto; display:block; opacity:0.78; }
     .top-nav .tn-links { display:flex; align-items:center; gap:32px; }
     .top-nav .tn-links a { display:inline-flex; align-items:center; gap:7px; text-decoration:none; font-family:'Space Grotesk',-apple-system,sans-serif; font-size:14px; font-weight:600; color:#3a3a3a; transition:color .2s; }
     .top-nav .tn-links a:hover { color:#b1040e; }
@@ -322,6 +322,7 @@
 <nav class="side-nav">
   <a href="#overview" data-target="overview"><span class="dot"></span><span class="lbl">Overview</span></a>
   <a href="#results" data-target="results"><span class="dot"></span><span class="lbl">Results</span></a>
+  <a href="#api" data-target="api"><span class="dot"></span><span class="lbl">API</span></a>
   <a href="#motivation" data-target="motivation"><span class="dot"></span><span class="lbl">Motivation</span></a>
   <a href="#methodology" data-target="methodology"><span class="dot"></span><span class="lbl">Methodology</span></a>
   <a href="#analysis" data-target="analysis"><span class="dot"></span><span class="lbl">Analysis</span></a>
@@ -1114,15 +1115,18 @@ Note: We use a letter-based scale instead of digits to enable logprob extraction
   <div class="content has-text-centered">
     <p style="font-size: 0.9em;">
       <a href="https://github.com/llm-as-a-verifier/llm-as-a-verifier" target="_blank">Code</a> &nbsp;&middot;&nbsp;
-      <a href="https://github.com/llm-as-a-verifier/TurboAgent" target="_blank">TurboAgent Extension</a> &nbsp;&middot;&nbsp;
+      <a href="https://github.com/llm-as-a-verifier/TurboAgent" target="_blank">Claude Code Extension</a> &nbsp;&middot;&nbsp;
       <a href="mailto:jackykwok@stanford.edu">Contact</a>
+    </p>
+    <p style="font-size: 0.8em; color: #999; margin-top: 0.6rem;">
+      Website based on <a href="https://github.com/polaris-evals/polaris-evals.github.io" target="_blank" style="color:inherit; text-decoration:underline;">PolaRiS Template</a>
     </p>
   </div>
 </footer>
 
 <script>
 (function(){
-  var ids=['overview','results','motivation','methodology','analysis','experiments','appendix'];
+  var ids=['overview','results','api','motivation','methodology','analysis','experiments','appendix'];
   var links={};
   document.querySelectorAll('.side-nav a').forEach(function(a){ links[a.getAttribute('data-target')]=a; });
   var nav=document.querySelector('.side-nav');
