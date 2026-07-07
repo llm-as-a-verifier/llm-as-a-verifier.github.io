@@ -467,20 +467,20 @@
 </section>
 <section id="run-a-benchmark">
 <h2>Run a benchmark<a class="headerlink" href="#run-a-benchmark" title="Link to this heading">#</a></h2>
-<p>Run a benchmark by name (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">run.py</span></code> with no argument lists them):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>run.py<span class="w"> </span>terminal_bench
-python<span class="w"> </span>run.py<span class="w"> </span>swe_bench
-python<span class="w"> </span>run.py<span class="w"> </span>medagentbench
+<p>Run a benchmark by name (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">scripts/run.py</span></code> with no argument lists them):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>scripts/run.py<span class="w"> </span>terminal_bench
+python<span class="w"> </span>scripts/run.py<span class="w"> </span>swe_bench
+python<span class="w"> </span>scripts/run.py<span class="w"> </span>medagentbench
 </pre></div>
 </div>
 <p>The tournament defaults can be overridden on the command line:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>run.py<span class="w"> </span>swe_bench<span class="w"> </span>--pivots<span class="w"> </span><span class="m">2</span><span class="w"> </span>--n-evaluations<span class="w"> </span><span class="m">8</span><span class="w"> </span>--seed<span class="w"> </span><span class="m">0</span><span class="w"> </span>--max-workers<span class="w"> </span><span class="m">50</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>scripts/run.py<span class="w"> </span>swe_bench<span class="w"> </span>--pivots<span class="w"> </span><span class="m">2</span><span class="w"> </span>--n-evaluations<span class="w"> </span><span class="m">8</span><span class="w"> </span>--seed<span class="w"> </span><span class="m">0</span><span class="w"> </span>--max-workers<span class="w"> </span><span class="m">50</span>
 </pre></div>
 </div>
 </section>
 <section id="what-the-launcher-does">
 <h2>What the launcher does<a class="headerlink" href="#what-the-launcher-does" title="Link to this heading">#</a></h2>
-<p>For each benchmark, <code class="docutils literal notranslate"><span class="pre">run.py</span></code> loads the trajectories and criteria, splits tasks into <em>all-pass</em> / <em>all-fail</em> / <em>swing</em> (only swing tasks — where the N trials disagree — need verification), runs a <a class="reference internal" href="../advanced_features/pivot_tournament.html"><span class="std std-doc">Probabilistic Pivot Tournament</span></a> per swing task, and reports <strong>Pass&#64;1 vs. LLM-as-a-Verifier vs. Oracle</strong>.
+<p>For each benchmark, <code class="docutils literal notranslate"><span class="pre">scripts/run.py</span></code> loads the trajectories and criteria, splits tasks into <em>all-pass</em> / <em>all-fail</em> / <em>swing</em> (only swing tasks — where the N trials disagree — need verification), runs a <a class="reference internal" href="../advanced_features/pivot_tournament.html"><span class="std std-doc">Probabilistic Pivot Tournament</span></a> per swing task, and reports <strong>Pass&#64;1 vs. LLM-as-a-Verifier vs. Oracle</strong>.
 Verifier scores are cached under <code class="docutils literal notranslate"><span class="pre">cache/</span></code> (re-runs are incremental) and result tables are written under <code class="docutils literal notranslate"><span class="pre">results/</span></code>.</p>
 </section>
 <section id="the-benchmark-registry">
