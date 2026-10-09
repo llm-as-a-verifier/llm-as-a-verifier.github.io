@@ -494,7 +494,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered" style="margin-bottom: 0;">
         <div class="column is-full-width">
-          <div class="tagline">Progress Tracking (Robotics)</div>
+          <div class="tagline" id="progress-tracking">Progress Tracking (Robotics)</div>
           <div class="card-surface">
             <div class="rb-grid">
               <div class="rb-col">
@@ -1345,6 +1345,14 @@ Note: We use a letter-based scale instead of digits to enable logprob extraction
   }
   if(document.readyState!=='loading') boot(); else document.addEventListener('DOMContentLoaded', boot);
 })();
+</script>
+
+<script>
+  // Re-align deep links (e.g. /progress-tracking -> #progress-tracking) once images/videos above have loaded.
+  window.addEventListener('load', function(){
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el) el.scrollIntoView({behavior: 'auto'});
+  });
 </script>
 
 </body>
