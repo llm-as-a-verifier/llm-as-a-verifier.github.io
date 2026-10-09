@@ -291,6 +291,18 @@
     .pt-tag-failed { color:#b1040e; background:rgba(177,4,14,0.08); border:1px solid rgba(177,4,14,0.3); }
     @media (max-width:600px){ .pt-captions{ grid-template-columns:1fr; } .pt-task{ margin-left:0; flex-basis:100%; } .pt-chart-wrap{ height:300px; } }
 
+    /* ---- Painting RL gallery ---- */
+    .prl-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+    .prl-chip { font-family:'Inter',sans-serif; font-size:12px; font-weight:500; color:#4a4a4a; background:#f7f7f6; border:1px solid rgba(0,0,0,0.08); border-radius:999px; padding:5px 12px; cursor:pointer; transition:all .2s ease; }
+    .prl-chip:hover { border-color:rgba(177,4,14,0.35); color:#b1040e; }
+    .prl-chip.is-active { color:#b1040e; background:rgba(177,4,14,0.08); border-color:rgba(177,4,14,0.4); font-weight:600; }
+    .prl-frames { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .prl-frame { margin:0; }
+    .prl-frame img { width:100%; aspect-ratio:1; object-fit:cover; display:block; border-radius:10px; background:#f7f7f6; border:1px solid rgba(0,0,0,0.06); }
+    .prl-frame figcaption { font-family:'Fira Code',monospace; font-size:11px; letter-spacing:0.06em; color:#7a7a7a; text-align:center; margin-top:8px; }
+    .prl-frame:last-child figcaption { color:#b1040e; font-weight:600; }
+    @media (max-width:600px){ .prl-frames{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+
     /* ---- Robotics video + synced chart ---- */
     .rb-grid { display:grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap:20px; align-items:start; }
     .rb-col { display:flex; flex-direction:column; gap:10px; }
@@ -455,6 +467,20 @@
           <p class="tldr-caption has-text-centered">
             <strong>LLM-as-a-Verifier</strong> as a dense reward signal improves the sample efficiency of both off-policy and on-policy RL algorithms. On LIBERO, LLM-as-a-Verifier achieves &asymp;&nbsp;1.8&times; higher sample efficiency than sparse reward baselines when fine-tuning a &pi;<sub>0</sub> policy with SAC. On the MATH reasoning benchmark, it achieves &asymp;&nbsp;1.1&times; higher sample efficiency when fine-tuning Qwen3-8B with GRPO.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" style="padding-top: 1.75rem; padding-bottom: 1.75rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered" style="margin-bottom: 0;">
+        <div class="column is-full-width">
+          <div class="tagline" id="painting-rl">Reinforcement Learning (Painting)</div>
+          <div class="card-surface">
+            <div class="prl-chips" id="prlChips" role="tablist" aria-label="Painting prompts"></div>
+            <div class="prl-frames" id="prlFrames"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1344,6 +1370,44 @@ Note: We use a letter-based scale instead of digits to enable logprob extraction
     fetch('./data/robotics_corn.json').then(function(r){return r.json();}).then(init).catch(function(e){console.error('robotics data load failed', e);});
   }
   if(document.readyState!=='loading') boot(); else document.addEventListener('DOMContentLoaded', boot);
+})();
+</script>
+
+<script>
+// Painting RL gallery: one prompt at a time, four RL iterations side by side.
+(function(){
+  var PROMPTS = [
+    ['violet-daisy', 'violet daisy'],
+    ['teal-forest-path', 'teal forest path'],
+    ['ochre-pear-on-a-table', 'ochre pear on a table'],
+    ['rose-pink-cactus', 'rose pink cactus'],
+    ['crimson-daisy', 'crimson daisy'],
+    ['cobalt-blue-mountain-lake-at-dawn', 'cobalt blue mountain lake at dawn'],
+    ['rose-pink-lighthouse-on-a-rocky-coast', 'rose pink lighthouse on a rocky coast'],
+    ['rose-pink-koi-fish', 'rose pink koi fish'],
+    ['indigo-cherry-blossom-branch', 'indigo cherry blossom branch']
+  ];
+  function boot(){
+    var chips = document.getElementById('prlChips'), frames = document.getElementById('prlFrames');
+    if (!chips) return;
+    function show(i){
+      var p = PROMPTS[i];
+      Array.prototype.forEach.call(chips.children, function(c, j){ c.classList.toggle('is-active', j === i); c.setAttribute('aria-selected', j === i); });
+      var html = '';
+      for (var k = 1; k <= 4; k++) {
+        html += '<figure class="prl-frame"><img src="./media/paint-rl/' + p[0] + '-' + k + '.jpg" alt="' + p[1] + ', iteration ' + k + '" width="420" height="420" loading="lazy"><figcaption>Iteration ' + k + '</figcaption></figure>';
+      }
+      frames.innerHTML = html;
+    }
+    PROMPTS.forEach(function(p, i){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'prl-chip'; b.setAttribute('role', 'tab'); b.textContent = p[1];
+      b.addEventListener('click', function(){ show(i); });
+      chips.appendChild(b);
+    });
+    show(0);
+  }
+  if (document.readyState !== 'loading') boot(); else document.addEventListener('DOMContentLoaded', boot);
 })();
 </script>
 
